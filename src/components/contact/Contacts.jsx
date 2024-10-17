@@ -3,9 +3,12 @@ import { CurrentLine, Orange, Pink } from '../../helpers/color';
 import Contact from './Contact';
 import Spinner from '../Spinner';
 import { Link } from 'react-router-dom';
-const Contacts = ({ contacts, loading }) => {
-    console.log("loading")
-    console.log(contacts)
+import { useContext } from 'react';
+import { ContactContext } from '../../Context/contactContext';
+const Contacts = () => {
+    const { contacts, loading, deleteContact } = useContext(ContactContext);
+    console.log("contacts : -------------------");
+    console.log(contacts);
     return (
         <>
 
@@ -32,7 +35,9 @@ const Contacts = ({ contacts, loading }) => {
 
 
                             contacts.length > 0 ? contacts.map(c => (
-                                <Contact key={c.id} Contact={c} />
+                                <Contact key={c.id} Contact={c} confirmDelete={() => {
+                                    deleteContact(c.id, c.fullName)
+                                }} />
 
                             )) :
                                 (

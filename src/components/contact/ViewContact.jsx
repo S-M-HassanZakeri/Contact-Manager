@@ -1,14 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { ContactContext } from '../../Context/contactContext';
 import { CurrentLine, Purple, Cyan } from '../../helpers/color';
 import { GET_Group, GET_Contact } from '../../services/ContactServices';
 import Spinner from '../Spinner';
 
 const ViewContact = () => {
+    const { loading, setLoading } = useContext(ContactContext)
+
     const { contactId } = useParams();
 
     const [state, setState] = useState({
-        loading: false,
         contact: {},
         group: {}
     });
@@ -17,24 +19,28 @@ const ViewContact = () => {
         const fetchData = async () => {
             setState(prevState => ({ ...prevState, loading: true }));
             try {
+                setLoading(true)
                 const { data: ContactData } = await GET_Contact(contactId);
                 const { data: GroupData } = await GET_Group(ContactData.Groupe);
-
                 setState({
-                    loading: false,
                     contact: ContactData,
                     group: GroupData
                 });
+                setLoading(false)
+
             } catch (error) {
                 console.log(error.message);
-                setState(prevState => ({ ...prevState, loading: false }));
+                setState(prevState => ({ ...prevState }));
+                setLoading(prevLoading => !prevLoading)
+
+
             }
         };
 
         fetchData();
     }, [contactId]); // وابستگی به contactId
 
-    const { loading, contact, group } = state;
+    const { contact, group } = state;
 
     return (
         <>

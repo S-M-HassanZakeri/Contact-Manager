@@ -19,22 +19,13 @@
       "Groupe": "1"
     },
     {
-      "id": "b78f",
-      "fullName": "حسن خسروجردی",
-      "photo": "https://www.hassankhosrojerdi.ir/images/about.png",
-      "mobile": "09935533405",
-      "email": "HassanKhosro@gmail.com",
-      "job": "برنامه نویس",
-      "Groupe": "5"
-    },
-    {
-      "id": "0845",
-      "fullName": "ممد ارودو خانی",
+      "id": "c0b3",
+      "fullName": "محمد اردوخانی",
       "photo": "https://ordookhani.com/media/images/thumbs/229226255_1115761802570270_8907966718290124375_n_eicqAZs_%5B540x540%5D.webp",
-      "mobile": "09996545445",
-      "email": "mmadOrdoKhani@gmai.com",
+      "mobile": "09991472563",
+      "email": "mmadOrdo12@ordo.com",
       "job": "برنامه نویس",
-      "Groupe": "5"
+      "Groupe": "1"
     }
   ],
   "Groups": [
